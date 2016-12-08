@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8D64956F-4817-4832-B718-96ECA4E323B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BCFE86CB-C94C-4417-84E2-29DDF5564666}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WhatToDrink", "src\WhatToDrink\WhatToDrink.xproj", "{AE3EDEEA-69AF-4247-BFC0-631E6B376E81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE3EDEEA-69AF-4247-BFC0-631E6B376E81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE3EDEEA-69AF-4247-BFC0-631E6B376E81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE3EDEEA-69AF-4247-BFC0-631E6B376E81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE3EDEEA-69AF-4247-BFC0-631E6B376E81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE3EDEEA-69AF-4247-BFC0-631E6B376E81} = {8D64956F-4817-4832-B718-96ECA4E323B9}
+	EndGlobalSection
+EndGlobal

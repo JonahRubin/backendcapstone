@@ -84,7 +84,7 @@ namespace WhatToDrink
 
             app.UseIdentity();
 
-            //DbSeeder.Seed(app.ApplicationServices);
+            DbSeeder.Seed(app.ApplicationServices);
 
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715

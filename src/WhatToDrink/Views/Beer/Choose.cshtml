@@ -1,0 +1,43 @@
+@model WhatToDrink.Models.BeerViewModels.ChooseSeason
+
+@{
+    ViewData["Title"] = "Choose the season you'd like";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.DropDownList("Beer.SeasonId", @Model.SeasonId)
+        <span asp-validation-for="Beer.SeasonId" class="text-danger" />
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.DropDownList("Beer.FeelingId", @Model.FeelingId)
+        <span asp-validation-for="Beer.StyleId" class="text-danger" />
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.DropDownList("Beer.DayId", @Model.DayId)
+        <span asp-validation-for="Beer.ABVId" class="text-danger" />
+    </div>
+</div>
+
+<div id="BeersGoHere"></div>
+
+<div id="BeersByFeelingGoHere"></div>
+
+<div id="BeersByDayGoHere"></div>
+
+
+
+

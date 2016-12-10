@@ -41,6 +41,13 @@ textarea {
     width: 100%;
 }
 
+.card-img-top
+{
+    max-width: 350px;
+    max-height: 350px; 
+}
+
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
   /* Hide captions */

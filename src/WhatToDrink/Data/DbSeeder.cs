@@ -15,6 +15,10 @@ namespace WhatToDrink.Data
         {
             using (var context = new ApplicationDbContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
             {
+                if (context.Season.Any())
+                {
+                    return;
+                }
 
                 var beerSeasons = new Season[]
              {

@@ -1,0 +1,18 @@
+@model WhatToDrink.Models.BeerViewModels.ByFeeling
+
+@{
+    ViewData["Title"] = "How are you feeling?";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.DropDownList("Beer.FeelingId", @Model.FeelingId)
+        <span asp-validation-for="Beer.StyleId" class="text-danger" />
+    </div>
+</div>
+
+
+<div id="BeersByFeelingGoHere"></div>

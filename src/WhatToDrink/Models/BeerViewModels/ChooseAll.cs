@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace WhatToDrink.Models.BeerViewModels
 {
-    public class ChooseSeason    {
+    public class ChooseAll    {
         public Beer Beer { get; set; }
         public IEnumerable<Beer> Beers { get; set;}
         public Season Season { get; set; }
@@ -18,7 +18,7 @@ namespace WhatToDrink.Models.BeerViewModels
         public List<SelectListItem> FeelingId { get; set; }
         public List<SelectListItem> DayId { get; set; }
 
-        public ChooseSeason(ApplicationDbContext ctx)
+        public ChooseAll(ApplicationDbContext ctx)
         {
 
             this.SeasonId = ctx.Season

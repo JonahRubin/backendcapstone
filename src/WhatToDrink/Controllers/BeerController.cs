@@ -34,13 +34,32 @@ namespace WhatToDrink.Controllers
         }
 
         [HttpGet]
-        public IActionResult Choose()
+        public IActionResult ChooseAll()
         {
-            ChooseSeason model = new ChooseSeason(context);
+            ChooseAll model = new ChooseAll(context);
             return View(model);
         }
-      
-      
+
+        [HttpGet]
+        public IActionResult ByFeeling()
+        {
+            ByFeeling model = new ByFeeling(context);
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult BySeason()
+        {
+            BySeason model = new BySeason(context);
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult ByNight()
+        {
+            ByNight model = new ByNight(context);
+            return View(model);
+        }
 
         [HttpPost]
         public IActionResult GetBeersBySeason([FromRoute]int id)
@@ -51,7 +70,7 @@ namespace WhatToDrink.Controllers
 
         public IActionResult Index()
         {
-            ChooseSeason model = new ChooseSeason(context);
+            ChooseAll model = new ChooseAll(context);
             model.Beers = context.Beer.OrderBy(s => s.Name.ToUpper());
 
             return View(model);

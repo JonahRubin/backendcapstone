@@ -1,0 +1,19 @@
+@model WhatToDrink.Models.BeerViewModels.ByNight
+
+@{
+    ViewData["Title"] = "What kind of night would you like?";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.DropDownList("Beer.DayId", @Model.DayId)
+        <span asp-validation-for="Beer.ABVId" class="text-danger" />
+    </div>
+</div>
+
+
+<div id="BeersByDayGoHere"></div>

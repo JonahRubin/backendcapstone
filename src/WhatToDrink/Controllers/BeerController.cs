@@ -72,6 +72,27 @@ namespace WhatToDrink.Controllers
             var beersByDay = context.Beer.OrderBy(s => s.Name.ToUpper()).Where(s => s.ABVId == id).ToList();
             return Json(beersByDay);
         }
+
+        public async Task<IActionResult> Detail([FromRoute]int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            BeerDetail model = new BeerDetail(context);
+
+            model.Beer = await context.Beer
+                    .SingleOrDefaultAsync(b => b.BeerId == id);
+
+            if (model.Beer == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(model);
+        }
     }
 
 }

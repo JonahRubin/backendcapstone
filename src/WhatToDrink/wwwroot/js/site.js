@@ -41,9 +41,9 @@ $(document).ready(function () {
             method: "POST",
             dataType: "json",
             contentType: "application/json; charset=utf-8"
-        }).done((beersBySeason) => {
+        }).done((beersByFeeling) => {
             $("#BeersByFeelingGoHere").html("");
-            beersBySeason.forEach((beer) => {
+            beersByFeeling.forEach((beer) => {
                 console.log("these are the beers", beer);
                 $("#BeersByFeelingGoHere").append(`<h3>${beer.name}</h3>`)
             });

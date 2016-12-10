@@ -17,5 +17,6 @@ namespace WhatToDrink.Models
         [DataType(DataType.Date)]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime DateCreated { get; set; }
+
     }
 }

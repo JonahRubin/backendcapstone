@@ -1,0 +1,31 @@
+@model WhatToDrink.Models.BeerViewModels.ChooseSeason
+
+@{
+    ViewData["Title"] = "Beer list";
+}
+
+<h2 class="top-buffer">@ViewData["Title"]</h2>
+
+<div class="card-group">
+
+
+    @foreach (var beer in Model.Beers)
+    {
+        <div class="card">
+            <img class="card-img-top" src="@Html.DisplayFor(modelItem => beer.ImgUrl)" alt="Beer image">
+            <div class="card-block">
+                <h4 class="card-title"><a asp-action="Detail" asp-route-id="@beer.BeerId">@Html.DisplayFor(modelItem => beer.Name)</a></h4>
+                <p class="card-text">@Html.DisplayFor(modelItem => beer.Brewery) @Html.DisplayFor(modelItem => beer.Style.Name)</p>
+                <a href="#" class="btn btn-primary">Add to favorites</a>
+            </div>
+        </div>
+        @*@<div class="row productRow">
+
+                <div class="col-md-6"><a asp-action="Detail" asp-route-id="@beer.BeerId">@Html.DisplayFor(modelItem => beer.Name)</a></div>
+                <div class="col-md-2">$@Html.DisplayFor(modelItem => beer.Brewery)</div>
+                <div class="col-md-2">@Html.DisplayFor(modelItem => beer.Style.Name)</div>
+                <div class="col-md-2">
+                </div>
+            </div>*@
+    }
+</div>

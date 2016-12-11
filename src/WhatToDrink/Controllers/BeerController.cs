@@ -92,6 +92,15 @@ namespace WhatToDrink.Controllers
             return Json(beersByDay);
         }
 
+
+        [HttpPost]
+        
+
+        public IActionResult GetBeersByAll([FromRoute]int id1, int id2, int id3)
+        {
+            var beersByAll = context.Beer.OrderBy(s => s.Name.ToUpper()).Where(s => s.ABVId == id3 && s.StyleId == id2 && s.SeasonId == id1).ToList();
+            return Json(beersByAll);
+        }
         public async Task<IActionResult> Detail([FromRoute]int? id)
         {
             if (id == null)

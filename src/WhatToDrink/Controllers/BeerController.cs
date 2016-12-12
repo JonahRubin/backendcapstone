@@ -125,11 +125,21 @@ namespace WhatToDrink.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult Create(Beer beer)
-        {     
+        [HttpGet]
+        public IActionResult Create()
+        {
             CreateBeer model = new CreateBeer(context);
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Beer beer)
+        {     
+            CreateBeer model = new CreateBeer(context);
+
+            context.Add(beer);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 

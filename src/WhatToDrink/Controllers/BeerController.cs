@@ -68,10 +68,13 @@ namespace WhatToDrink.Controllers
             return Json(beersBySeason);
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             ChooseAll model = new ChooseAll(context);
             model.Beers = context.Beer.OrderBy(s => s.Name.ToUpper());
+
+            
 
             return View(model);
 
@@ -93,14 +96,14 @@ namespace WhatToDrink.Controllers
         }
 
 
-        [HttpPost]
-        
-
-        public IActionResult GetBeersByAll([FromRoute]int id1, int id2, int id3)
+        [HttpPost("/Beer/GetBeersByAll/{id1}/{id2}/{id3}")]
+        public IActionResult GetBeersByAll([FromRoute]int id1, [FromRoute] int id2, [FromRoute] int id3)
         {
             var beersByAll = context.Beer.OrderBy(s => s.Name.ToUpper()).Where(s => s.ABVId == id3 && s.StyleId == id2 && s.SeasonId == id1).ToList();
             return Json(beersByAll);
         }
+
+        [HttpGet]
         public async Task<IActionResult> Detail([FromRoute]int? id)
         {
             if (id == null)
@@ -119,6 +122,13 @@ namespace WhatToDrink.Controllers
             }
 
 
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Create(Beer beer)
+        {     
+            CreateBeer model = new CreateBeer(context);
             return View(model);
         }
     }

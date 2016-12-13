@@ -47,6 +47,10 @@ textarea {
     max-height: 350px; 
 }
 
+.beerdropdowns 
+{
+    margin: 0, auto; 
+}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

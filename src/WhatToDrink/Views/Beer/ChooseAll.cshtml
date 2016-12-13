@@ -7,11 +7,11 @@
 <h2>@ViewData["Title"]</h2>
 
 
-
+<div class="beerdropdowns">
 
 <div class="form-group">
     <div class="col-md-10">
-        @Html.DropDownList("Beer.SeasonId", @Model.SeasonId)
+        @Html.DropDownList("Beer.SeasonId", @Model.SeasonId, new { @class = "form-control", style = "width:400px"})
         <span asp-validation-for="Beer.SeasonId" class="text-danger" />
     </div>
 </div>
@@ -19,7 +19,7 @@
 
 <div class="form-group">
     <div class="col-md-10">
-        @Html.DropDownList("Beer.FeelingId", @Model.FeelingId)
+        @Html.DropDownList("Beer.FeelingId", @Model.FeelingId, new { @class = "form-control", style = "width:400px" })
         <span asp-validation-for="Beer.StyleId" class="text-danger" />
     </div>
 </div>
@@ -27,9 +27,10 @@
 
 <div class="form-group">
     <div class="col-md-10">
-        @Html.DropDownList("Beer.DayId", @Model.DayId)
+        @Html.DropDownList("Beer.DayId", @Model.DayId, new { @class = "form-control", style = "width:400px" })
         <span asp-validation-for="Beer.ABVId" class="text-danger" />
     </div>
+</div>
 </div>
 
 <div id="AllBeersGoHere"></div>

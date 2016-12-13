@@ -7,7 +7,11 @@
     <img class="card-img-top" src="@Html.DisplayFor(model => model.Beer.ImgUrl)" alt="Beer image">
     <div class="card-block">
         <h3 class="card-title">@Html.DisplayFor(model => model.Beer.Name)</h3>
-        <p class="card-text">@Html.DisplayFor(model => model.Beer.Brewery) @Html.DisplayFor(model => model.Beer.Style.Name)</p>
-        <a href="#" class="btn btn-primary">Add to favorites</a>
-    </div>
+        <p class="card-text">Brewery: @Html.DisplayFor(model => model.Beer.Brewery)</p> 
+        <p class="card-text"> Style: @Html.DisplayFor(model => model.Beer.Style.Name)</p>
+        <p class="card-text"> Availability:  @Html.DisplayFor(model => model.Beer.Season.Name)</p>
+        <p class="card-text"> ABV:  @Html.DisplayFor(model => model.Beer.ABV.Name)</p>
+
+            <a href="#" class="btn btn-primary">Add to favorites</a>
+</div>
 </div>

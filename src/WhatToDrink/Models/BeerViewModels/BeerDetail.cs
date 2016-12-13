@@ -13,8 +13,9 @@ namespace WhatToDrink.Models.BeerViewModels
     public class BeerDetail
     {
         public Beer Beer { get; set; }
-
-
+        public Style Style { get; set; }
+        public ABV ABV { get; set; }
+        public Season Season { get; set; }
 
         public BeerDetail(ApplicationDbContext ctx)
         {

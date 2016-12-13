@@ -116,6 +116,15 @@ namespace WhatToDrink.Controllers
             model.Beer = await context.Beer
                     .SingleOrDefaultAsync(b => b.BeerId == id);
 
+            model.Style = await context.Style
+                    .SingleOrDefaultAsync(s => s.StyleId == model.Beer.StyleId);
+
+            model.ABV = await context.ABV
+                    .SingleOrDefaultAsync(a => a.ABVId == model.Beer.ABVId);
+
+            model.Season = await context.Season
+                    .SingleOrDefaultAsync(s => s.SeasonId == model.Beer.SeasonId);
+
             if (model.Beer == null)
             {
                 return NotFound();

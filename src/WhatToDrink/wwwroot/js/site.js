@@ -29,7 +29,7 @@ $(document).ready(function () {
                         $("#AllBeersGoHere").html("");
                     beersByAll.forEach((beer) => {
                         console.log("these are the beers", beer);
-                        $("#AllBeersGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><h3>${beer.name}</h3><p>${beer.brewery}</p></div>`)
+                        $("#AllBeersGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><h3><a href="detail/${beer.beerId}">${beer.name}</a></h3><p>${beer.brewery}</p></div>`)
                         });
                     }
                  });
@@ -48,7 +48,7 @@ $(document).ready(function () {
             $("#BeersGoHere").html("");
             beersBySeason.forEach((beer) => {
                 console.log("these are the beers", beer);
-                $("#BeersGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><h3>${beer.name}</h3><p>${beer.brewery}</p></div>`)
+                $("#BeersGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><a href="detail/${beer.beerId}"><h3>${beer.name}</h3></a><p>${beer.brewery}</p></div>`)
             });
         });
     });
@@ -65,7 +65,7 @@ $(document).ready(function () {
             $("#BeersByFeelingGoHere").html("");
             beersByFeeling.forEach((beer) => {
                 console.log("these are the beers", beer);
-                $("#BeersByFeelingGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><h3>${beer.name}</h3><p>${beer.brewery}</p></div>`)
+                $("#BeersByFeelingGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><a href="detail/${beer.beerId}"><h3>${beer.name}</h3></a><p>${beer.brewery}</p></div>`)
             });
         });
     });
@@ -82,7 +82,7 @@ $(document).ready(function () {
             $("#BeersByDayGoHere").html("");
             beersByDay.forEach((beer) => {
                 console.log("these are the beers", beer);
-                $("#BeersByDayGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><h3>${beer.name}</h3><p>${beer.brewery}</p></div>`)
+                $("#BeersByDayGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><a href="detail/${beer.beerId}"><h3>${beer.name}</h3></a><p>${beer.brewery}</p></div>`)
             });
         });
     });

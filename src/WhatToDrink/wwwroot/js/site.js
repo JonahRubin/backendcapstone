@@ -20,11 +20,18 @@ $(document).ready(function () {
                     contentType: "application/json; charset=utf-8"
                 }).done((beersByAll) => {
                     console.log("i am a banana");
-                     $("#AllBeersGoHere").html("");
-                     beersByAll.forEach((beer) => {
-                         console.log("these are the beers", beer);
-                         $("#AllBeersGoHere").append(`<h3>${beer.name}</h3>`)
-                     });
+                    console.log(beersByAll, "here are the beers by all");
+                    if (beersByAll.length === 0 ) {
+                        $("#AllBeersGoHere").html("");
+                        $("#AllBeersGoHere").append(`<h3>Sorry, brah. No beers match that combination.</h3>`)
+                    }
+                    else {
+                        $("#AllBeersGoHere").html("");
+                    beersByAll.forEach((beer) => {
+                        console.log("these are the beers", beer);
+                        $("#AllBeersGoHere").append(`<div class="col-sm-6"><img class="card-img-top" src=${beer.imgUrl}><h3>${beer.name}</h3><p>${beer.brewery}</p></div>`)
+                        });
+                    }
                  });
             });
         });

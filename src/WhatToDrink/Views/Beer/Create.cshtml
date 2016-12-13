@@ -26,6 +26,13 @@
                 <span asp-validation-for="Beer.Brewery" class="text-danger" />
             </div>
         </div>
+        <div class="form-group">
+            <label asp-for="Beer.Season" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                @Html.DropDownList("Beer.SeasonId", @Model.SeasonId)
+                <span asp-validation-for="Beer.SeasonId" class="text-danger" />
+            </div>
+        </div>
  
         <div class="form-group">
             <label asp-for="Beer.Style" class="col-md-2 control-label"></label>
@@ -39,6 +46,13 @@
             <div class="col-md-10">
                 @Html.DropDownList("Beer.ABVId", @Model.ABVId)
                 <span asp-validation-for="Beer.ABVId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Beer.ImgUrl" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Beer.ImgUrl" class="form-control" />
+                <span asp-validation-for="Beer.ImgUrl" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

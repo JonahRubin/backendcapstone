@@ -1,12 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using WhatToDrink.Models;
 using WhatToDrink.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Identity;
-using System.Collections;
 
 namespace WhatToDrink.Models.BeerViewModels
 {
@@ -16,6 +11,8 @@ namespace WhatToDrink.Models.BeerViewModels
 
         public Style Style { get; set; }
         public List<SelectListItem> StyleId { get; set; }
+        public Season Season { get; set;  }
+        public List<SelectListItem> SeasonId { get; set; }
         public List<SelectListItem> ABVId { get; set; }
         public ABV ABV { get; set; }
 
@@ -49,6 +46,22 @@ namespace WhatToDrink.Models.BeerViewModels
             this.ABVId.Insert(0, new SelectListItem
             {
                 Text = "Choose an ABV",
+                Value = "0"
+            });
+
+
+            this.SeasonId = ctx.Season
+                                    .OrderBy(f => f.Name)
+                                    .AsEnumerable()
+                                    .Select(li => new SelectListItem
+                                    {
+                                        Text = li.Name,
+                                        Value = li.SeasonId.ToString()
+                                    }).ToList();
+
+            this.SeasonId.Insert(0, new SelectListItem
+            {
+                Text = "When is this beer available?",
                 Value = "0"
             });
         }

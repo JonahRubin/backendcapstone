@@ -116,6 +116,15 @@ namespace WhatToDrink.Controllers
             model.Beer = await context.Beer
                     .SingleOrDefaultAsync(b => b.BeerId == id);
 
+            model.Style = await context.Style
+                    .SingleOrDefaultAsync(s => s.StyleId == model.Beer.StyleId);
+
+            model.ABV = await context.ABV
+                    .SingleOrDefaultAsync(a => a.ABVId == model.Beer.ABVId);
+
+            model.Season = await context.Season
+                    .SingleOrDefaultAsync(s => s.SeasonId == model.Beer.SeasonId);
+
             if (model.Beer == null)
             {
                 return NotFound();
@@ -125,11 +134,21 @@ namespace WhatToDrink.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult Create(Beer beer)
-        {     
+        [HttpGet]
+        public IActionResult Create()
+        {
             CreateBeer model = new CreateBeer(context);
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Beer beer)
+        {     
+            CreateBeer model = new CreateBeer(context);
+
+            context.Add(beer);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 

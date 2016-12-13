@@ -9,7 +9,7 @@
 
 <div class="form-group">
     <div class="col-md-10">
-        @Html.DropDownList("Beer.Feeling", @Model.FeelingId)
+        @Html.DropDownList("Beer.Feeling", @Model.FeelingId, new { @class = "form-control", style = "width:400px" })
         <span asp-validation-for="Beer.StyleId" class="text-danger" />
     </div>
 </div>

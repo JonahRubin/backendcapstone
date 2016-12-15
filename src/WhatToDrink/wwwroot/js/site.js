@@ -70,6 +70,18 @@ $(document).ready(function () {
         });
     });
 
+    $("#AddToList").on("click", function (e) {
+        console.log('AddtoCart clicked')
+        $.ajax({
+            url: `/Beer/AddToList/${$(this).val()}`,
+            method: "POST",
+            contentType: 'application/json; charset=utf-8'
+        }).done(() => {
+            console.log('beer added to list');
+            window.location.replace("http://localhost:49355/beer/index");
+
+        });
+    });
 
     $("#Beer_Day").on("change", function (e) {
         console.log('DayId clicked')

@@ -33,6 +33,17 @@ namespace WhatToDrink.Controllers
             context = ctx;
         }
 
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
+
+        [AllowAnonymous]
+        public IActionResult Error()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult ChooseAll()
         {
@@ -135,6 +146,7 @@ namespace WhatToDrink.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             CreateBeer model = new CreateBeer(context);
@@ -151,27 +163,23 @@ namespace WhatToDrink.Controllers
             return RedirectToAction("Index");
         }
 
-        private Task<ApplicationUser> GetCurrentUserAsync()
-        {
-            return _userManager.GetUserAsync(HttpContext.User);
-        }
+      
 
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> AddToList([FromRoute] int id)
         {
             var user = await GetCurrentUserAsync();
-
             YourBeer yourBeer = new YourBeer();
             yourBeer.User = user;
-            yourBeer.BeerId = Convert.ToInt32(id);
-
-            context.Add(yourBeer);
+            yourBeer.BeerId = id;
+            context.YourBeer.Add(yourBeer);
             await context.SaveChangesAsync();
-
-            return RedirectToAction("Index", "Beer");
+            return RedirectToAction("Index");
 
         }
+
+
 
         [HttpGet]
         [Authorize]

@@ -460,7 +460,7 @@ namespace WhatToDrink.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Beer");
+                return RedirectToAction("ChooseAll", "Beer");
 
             }
         }

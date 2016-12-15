@@ -212,7 +212,6 @@ namespace WhatToDrink.Controllers
 
         }
 
-        [HttpDelete]
         [Authorize]
         public async Task<IActionResult> RemoveFromList([FromRoute] int id)
         {
@@ -220,7 +219,7 @@ namespace WhatToDrink.Controllers
             var yourBeer = await context.YourBeer.Where(yb => yb.User == user && yb.BeerId == id).SingleOrDefaultAsync();
             context.YourBeer.Remove(yourBeer);
             await context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListOfBeers");
 
         }
 

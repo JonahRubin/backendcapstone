@@ -1,7 +1,16 @@
 @model WhatToDrink.Models.BeerViewModels.BeerDetail
 
+@using Microsoft.AspNetCore.Identity
+@using WhatToDrink.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
-
+@if (@UserManager.GetUserName(User) != null)
+{
+    <h3>
+        Hello, @UserManager.GetUserName(User)!
+    </h3>
+}
 
 <div class="card">
     <img class="card-img-top" src="@Html.DisplayFor(model => model.Beer.ImgUrl)" alt="Beer image">
@@ -11,7 +20,15 @@
         <p class="card-text"> Style: @Html.DisplayFor(model => model.Beer.Style.Name)</p>
         <p class="card-text"> Availability:  @Html.DisplayFor(model => model.Beer.Season.Name)</p>
         <p class="card-text"> ABV:  @Html.DisplayFor(model => model.Beer.ABV.Name)</p>
+    </div>
+@if (@UserManager.GetUserName(User) != null)
+{
+     <div class="col-md-3"><button id="AddToList" value="@Model.Beer.BeerId" class="btn btn-primary">Add to beer list</button></div>
+}
 
-            <a href="#" class="btn btn-primary">Add to favorites</a>
-</div>
+else 
+{
+    <div class="col-md-3"><button id="" value="@Model.Beer.BeerId" class="btn-danger btn-primary">Login to add your beer</button></div>
+
+}
 </div>

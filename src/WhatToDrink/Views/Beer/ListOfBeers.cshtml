@@ -1,0 +1,25 @@
+@model WhatToDrink.Models.BeerViewModels.BeerList
+@using WhatToDrink.Models
+
+
+@{
+    ViewData["Title"] = "Your beers";
+}
+
+<h2 class="top-buffer">@ViewData["Title"]</h2>
+
+<div class="card-group">
+
+
+    @foreach (var beer in Model.YourBeers)
+    {
+        <div class="card col-sm-4">
+            <img class="card-img-top" src="@Html.DisplayFor(modelItem => beer.ImgUrl)" alt="Beer image">
+            <div class="card-block">
+                <h4 class="card-title"><a asp-action="Detail" asp-route-id="@beer.BeerId">@Html.DisplayFor(modelItem => beer.Name)</a></h4>
+                <p class="card-text">@Html.DisplayFor(modelItem => beer.Brewery) @Html.DisplayFor(modelItem => beer.Style.Name)</p>
+            </div>
+        </div>
+
+    }
+</div>

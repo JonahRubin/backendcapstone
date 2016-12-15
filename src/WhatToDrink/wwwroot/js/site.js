@@ -71,7 +71,7 @@ $(document).ready(function () {
     });
 
     $("#AddToList").on("click", function (e) {
-        console.log('AddtoCart clicked')
+        console.log('AddtoList clicked')
         $.ajax({
             url: `/Beer/AddToList/${$(this).val()}`,
             method: "POST",
@@ -79,6 +79,19 @@ $(document).ready(function () {
         }).done(() => {
             console.log('beer added to list');
             window.location.replace("http://localhost:49355/beer/index");
+
+        });
+    });
+
+    $("#RemoveFromList").on("click", function (e) {
+        console.log('RemoveList clicked')
+        $.ajax({
+            url: `/Beer/RemoveFromList/${$(this).val()}`,
+            method: "DELETE",
+            contentType: 'application/json; charset=utf-8'
+        }).done(() => {
+            console.log('beer deleted from list');
+            window.location.replace("http://localhost:49355/beer/listofbeers");
 
         });
     });

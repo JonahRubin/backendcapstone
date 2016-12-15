@@ -145,6 +145,39 @@ namespace WhatToDrink.Controllers
             return View(model);
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> ListDetail([FromRoute]int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            BeerDetail model = new BeerDetail(context);
+
+            model.Beer = await context.Beer
+                    .SingleOrDefaultAsync(b => b.BeerId == id);
+
+            model.Style = await context.Style
+                    .SingleOrDefaultAsync(s => s.StyleId == model.Beer.StyleId);
+
+            model.ABV = await context.ABV
+                    .SingleOrDefaultAsync(a => a.ABVId == model.Beer.ABVId);
+
+            model.Season = await context.Season
+                    .SingleOrDefaultAsync(s => s.SeasonId == model.Beer.SeasonId);
+
+            if (model.Beer == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(model);
+        }
+
+
         [HttpGet]
         [Authorize]
         public IActionResult Create()
@@ -179,6 +212,17 @@ namespace WhatToDrink.Controllers
 
         }
 
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> RemoveFromList([FromRoute] int id)
+        {
+            var user = await GetCurrentUserAsync();
+            var yourBeer = await context.YourBeer.Where(yb => yb.User == user && yb.BeerId == id).SingleOrDefaultAsync();
+            context.YourBeer.Remove(yourBeer);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index");
+
+        }
 
 
         [HttpGet]

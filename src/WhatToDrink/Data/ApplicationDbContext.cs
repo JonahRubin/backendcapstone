@@ -20,6 +20,9 @@ namespace WhatToDrink.Data
             public DbSet<Season> Season { get; set; }
             public DbSet<Style> Style { get; set; }
             public DbSet<TypeOfDay> TypeOfDay { get; set; }
+            public DbSet<YourBeer> YourBeer { get; set; }
+
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)

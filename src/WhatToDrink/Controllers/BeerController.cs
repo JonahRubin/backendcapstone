@@ -74,7 +74,7 @@ namespace WhatToDrink.Controllers
             ChooseAll model = new ChooseAll(context);
             model.Beers = context.Beer.OrderBy(s => s.Name.ToUpper());
 
-            
+
 
             return View(model);
 
@@ -140,16 +140,55 @@ namespace WhatToDrink.Controllers
             CreateBeer model = new CreateBeer(context);
             return View(model);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(Beer beer)
-        {     
+        {
             CreateBeer model = new CreateBeer(context);
 
             context.Add(beer);
             await context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-    }
 
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddToList([FromRoute] int id)
+        {
+            var user = await GetCurrentUserAsync();
+
+            YourBeer yourBeer = new YourBeer();
+            yourBeer.User = user;
+            yourBeer.BeerId = Convert.ToInt32(id);
+
+            context.Add(yourBeer);
+            await context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Beer");
+
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ListOfBeers()
+        {
+            var user = await GetCurrentUserAsync();
+            BeerList model = new BeerList(context);
+            List<YourBeer> yourBeers = context.YourBeer.Where(li => li.User == user).ToList();
+
+            model.YourBeers = new List<Beer>();
+            for (var i = 0; i < yourBeers.Count(); i++)
+            {
+                model.YourBeers.Add(context.Beer.Where(b => b.BeerId == yourBeers[i].BeerId).SingleOrDefault());
+            }
+
+            return View(model);
+        }
+
+    }
 }

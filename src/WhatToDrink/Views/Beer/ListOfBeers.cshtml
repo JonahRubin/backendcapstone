@@ -9,11 +9,11 @@
 <h2 class="top-buffer">@ViewData["Title"]</h2>
 
 <div class="card-group">
-    @if (!Model.YourBeers.Any()) 
+    @if (!Model.YourBeers.Any())
     {
     <h3>Add some beers! </h3>
-    } 
-    else 
+    }
+    else
     {
         @foreach (var beer in Model.YourBeers)
         {
@@ -23,7 +23,10 @@
                     <h4 class="card-title"><a asp-action="ListDetail" asp-route-id="@beer.BeerId">@Html.DisplayFor(modelItem => beer.Name)</a></h4>
                     <p class="card-text">@Html.DisplayFor(modelItem => beer.Brewery) @Html.DisplayFor(modelItem => beer.Style.Name)</p>
                 </div>
+                <a class="btn btn-danger btn-default" asp-action="RemoveFromList" asp-route-id="@beer.BeerId">Remove from list</a>
+
             </div>
+
 
         }
     }

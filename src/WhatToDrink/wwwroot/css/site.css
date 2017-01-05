@@ -10,6 +10,8 @@
     padding-right: 15px;
 }
 
+
+
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
@@ -51,6 +53,29 @@ textarea {
 {
     margin: 0, auto; 
 }
+
+.navbar-inverse
+ {
+    background-color: #e6ac00;
+    border-color: #fff;
+
+}
+
+.navbar-inverse
+.btn-link {
+    color: #222;
+}
+
+.navbar-inverse 
+.navbar-nav > li > a {
+    color: #222;
+}
+.navbar-inverse 
+.navbar-brand {
+    color: #222;
+}
+
+
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

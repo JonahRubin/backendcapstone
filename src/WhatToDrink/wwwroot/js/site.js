@@ -23,7 +23,7 @@ $(document).ready(function () {
                     console.log(beersByAll, "here are the beers by all");
                     if (beersByAll.length === 0 ) {
                         $("#AllBeersGoHere").html("");
-                        $("#AllBeersGoHere").append(`<h3>Sorry, brah. No beers match that combination.</h3>`)
+                        $("#AllBeersGoHere").append(`<h3>Sorry, buddy. No beers match that combination.</h3>`)
                     }
                     else {
                         $("#AllBeersGoHere").html("");
